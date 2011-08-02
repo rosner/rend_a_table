@@ -1,2 +1,4 @@
 .vagrant
 *.png
+*.pyc
+rend_a_table/node_modules
