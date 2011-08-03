@@ -1,19 +1,14 @@
-var exec = require("child_process").exec;
 var querystring = require("querystring");
+var helpers = require("./helpers");
+var phantom = require("./phantom");
+var util = require("util");
 
 function render(response, postData) {
-    console.log("invoked the render handler with argument " + typeof response);
 
-    var uploadedText = querystring.parse(postData).text;
-    console.log(uploadedText);
+    console.log(util.inspect(postData));
 
-    exec("ls -lah", function (error, stdout, stderr) {
-        console.log(stdout);
+    phantom.renderImage(response);
 
-        response.writeHead(200, {"Content-Type":"text/plain"});
-        response.write(stdout);
-        response.end();
-    });
 }
 
 function howto(response, postData) {
